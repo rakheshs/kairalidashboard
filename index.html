@@ -109,7 +109,7 @@
 
             <!-- Membership Card Display -->
             <div id="app-content" class="hidden" style="text-align: center;">
-                <div id="status-message" style="text-align: center; margin-bottom: 20px; color: white;">Please fill out the form to generate Kairali membership card.</div>
+                <div id="status-message" style="text-align: center; margin-bottom: 20px; color: white;"></div>
                 <div id="card-container" style="margin: 20px 0;">
                     <div id="card-front" style="border: 2px solid white; box-shadow: inset 0 0 0 2px white, inset 0 0 0 4px rgba(255, 255, 255, 0.2), inset 0 0 0 6px white, 0 4px 10px rgba(0,0,0,0.2); padding: 40px 10px 20px 10px; background-color: #000; color: #fff; position: relative; max-width: 250px; margin: 0 auto; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: space-between;">
                         <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.4);"></div>
@@ -419,7 +419,7 @@
                 allMemberData.push(cardData);
                 updateCardUI(cardData);
 
-                statusMessageEl.textContent = 'Card generated and ready to download.';
+                statusMessageEl.textContent = 'Kairali Membership Card generated and ready to download.';
                 appContentEl.classList.remove('hidden');
                 inputFormEl.classList.add('hidden');
             });
