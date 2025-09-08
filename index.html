@@ -12,9 +12,22 @@
         .hidden {
             display: none;
         }
-        /* Mobile-first adjustments for better responsiveness */
+        /* Reverted back to original styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        #main-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
         #login-container, #app-container {
-            padding: 20px 10px; /* Reduced padding for small screens */
+            padding: 20px 10px;
         }
         #login-container > div, #app-container > div {
             padding: 10px;
@@ -102,7 +115,7 @@
                 <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
                 
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;">
-                    <button id="profile-pic-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"><span style="color: red;">*</span> Profile Picture</button>
+                    <button id="profile-pic-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"><span style="color: red;">*</span> Member Picture</button>
                     <button id="generate-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Generate Card</button>
                     <button id="clear-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Reset</button>
                     <button id="back-to-login-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Back</button>
@@ -274,7 +287,7 @@
             document.getElementById('profile-pic-upload').value = null;
             document.getElementById('profile-pic-button').style.backgroundColor = 'teal';
             document.getElementById('profile-pic-button').style.color = 'white';
-            document.getElementById('status-message').textContent = 'Fields have been cleared.';
+            document.getElementById('status-message').textContent = 'Please fill out the form to generate Kairali membership card.';
             
             const cardFront = document.getElementById('card-front');
             cardFront.style.backgroundImage = `url(${cardBackground})`;
@@ -313,8 +326,6 @@
                 return new Promise(resolve => {
                     // Simulate a network delay for the API call
                     setTimeout(() => {
-                        // In a real application, you would send this to a server
-                        // and the server would validate the credentials.
                         const validUser = (username === 'kairaliadmin' && password === 'kairaliadmin');
                         resolve(validUser);
                     }, 1000); // 1-second delay
@@ -338,6 +349,8 @@
                     loginContainerEl.classList.add('hidden');
                     appContainerEl.classList.remove('hidden');
                     resetForm();
+                    // Set default Member ID
+                    document.getElementById('member-id-input').value = '2025KSYR';
                     statusMessageEl.textContent = 'Please fill out the form to generate Kairali membership card.';
                     updateCardUI({});
                 } else {
