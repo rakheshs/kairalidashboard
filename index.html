@@ -11,6 +11,13 @@
         .hidden {
             display: none;
         }
+        /* Mobile-first adjustments for better responsiveness */
+        #login-container, #app-container {
+            padding: 20px 10px; /* Reduced padding for small screens */
+        }
+        #login-container > div, #app-container > div {
+            padding: 10px;
+        }
     </style>
 </head>
 <body style="font-family: 'Inter', sans-serif; background-color: #f0f0f0; padding: 20px;">
@@ -21,11 +28,11 @@
             <div style="padding: 20px; border-radius: 10px;">
                 <img src="https://static.wixstatic.com/media/5bde00_f089149e8ee445389ee9f8191b5996ce~mv2.png" alt="Kairali of Syracuse Logo" style="display: block; width: 150px; margin: 0 auto;">
                 <h1 style="text-align: center; color: white; font-size: 28px; margin-top: 20px; font-family: 'EB Garamond', serif;">Kairali Membership Card Generator</h1>
-                <div style="margin-bottom: 15px; max-width: 200px; margin: 0 auto;">
+                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 0 auto;">
                     <label for="username-input" style="display: block; margin-bottom: 5px; color: white;">Username</label>
                     <input type="text" id="username-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                 </div>
-                <div style="margin-bottom: 15px; max-width: 200px; margin: 15px auto 0 auto;">
+                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
                     <label for="password-input" style="display: block; margin-bottom: 5px; color: white;">Password</label>
                     <input type="password" id="password-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                 </div>
@@ -42,19 +49,19 @@
 
             <!-- Input Form -->
             <div id="input-form">
-                <div style="margin-bottom: 15px; max-width: 300px; margin: 0 auto;">
+                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 0 auto;">
                     <label for="member-id-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Member ID</label>
                     <input type="text" id="member-id-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                 </div>
-                <div style="margin-bottom: 15px; max-width: 300px; margin: 15px auto 0 auto;">
+                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
                     <label for="member-name-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Member Name</label>
                     <input type="text" id="member-name-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                 </div>
-                <div style="margin-bottom: 15px; max-width: 300px; margin: 15px auto 0 auto;">
+                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
                     <label for="family-members-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> # of members in the family</label>
                     <input type="number" id="family-members-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                 </div>
-                <div style="margin-bottom: 15px; max-width: 300px; margin: 15px auto 0 auto;">
+                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
                     <label for="membership-type-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Membership Type</label>
                     <select id="membership-type-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                         <option value="" selected disabled>Select Membership Type</option>
@@ -66,13 +73,13 @@
                         <option value="Regular-Student">Regular-Student</option>
                     </select>
                 </div>
-                <div style="margin-bottom: 20px; max-width: 300px; margin: 15px auto 0 auto;">
+                <div style="margin-bottom: 20px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
                     <label for="membership-expires-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Membership Expiry</label>
                     <input type="date" id="membership-expires-input" value="2025-12-31" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                 </div>
-                <div style="margin-bottom: 15px; max-width: 300px; margin: 15px auto 0 auto;">
+                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
                     <label for="phone-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Phone Number</label>
-                    <div style="display: flex; gap: 5px;">
+                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
                         <select id="isd-code-select" style="width: 40%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                             <option value="+1">USA/CA (+1)</option>
                             <option value="+91">India (+91)</option>
@@ -85,14 +92,14 @@
                         <input type="tel" id="phone-input" style="flex-grow: 1; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                     </div>
                 </div>
-                <div style="margin-bottom: 15px; max-width: 300px; margin: 15px auto 0 auto;">
+                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
                     <label for="email-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> E-mail</label>
                     <input type="email" id="email-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
                 </div>
                 
                 <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
                 
-                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;">
                     <button id="profile-pic-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"><span style="color: red;">*</span> Profile Picture</button>
                     <button id="generate-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Generate Card</button>
                     <button id="clear-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Reset</button>
@@ -151,7 +158,7 @@
                     </div>
                 </div>
                 
-                <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;">
                     <button id="download-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Download Card</button>
                     <button id="back-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Back</button>
                 </div>
