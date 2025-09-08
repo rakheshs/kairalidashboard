@@ -12,9 +12,22 @@
         .hidden {
             display: none;
         }
-        /* Mobile-first adjustments for better responsiveness */
+        /* Reverted back to original styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        #main-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
         #login-container, #app-container {
-            padding: 20px 10px; /* Reduced padding for small screens */
+            padding: 20px 10px;
         }
         #login-container > div, #app-container > div {
             padding: 10px;
@@ -42,7 +55,7 @@
                     <button id="login-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Login</button>
                 </div>
             </div>
-            <div style="position: absolute; bottom: 15px; right: 20px; color: darkgrey; font-size: 12px;">v1.6</div>
+            <div style="position: absolute; bottom: 15px; right: 20px; color: darkgrey; font-size: 12px;">v1.7</div>
         </div>
 
         <!-- Main Application Section -->
@@ -102,7 +115,7 @@
                 <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
                 
                 <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;">
-                    <button id="profile-pic-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"><span style="color: red;">*</span> Profile Picture</button>
+                    <button id="profile-pic-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"><span style="color: red;">*</span> Member Picture</button>
                     <button id="generate-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Generate Card</button>
                     <button id="clear-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Reset</button>
                     <button id="back-to-login-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Back</button>
@@ -310,10 +323,9 @@
             
             // Simulates a secure backend login process.
             function authenticateUser(username, password) {
+                // This function is now modified to always return true, bypassing credential checks.
                 return new Promise(resolve => {
-                    // Simulate a network delay for the API call
                     setTimeout(() => {
-                        // The login is now always successful
                         resolve(true);
                     }, 1000); // 1-second delay
                 });
@@ -340,10 +352,6 @@
                     document.getElementById('member-id-input').value = '2025KSYR';
                     statusMessageEl.textContent = 'Please fill out the form to generate Kairali membership card.';
                     updateCardUI({});
-                } else {
-                    loginErrorMessageEl.textContent = 'Invalid username or password.';
-                    loginErrorMessageEl.style.color = 'red';
-                    loginErrorMessageEl.style.display = 'block';
                 }
             });
 
