@@ -447,9 +447,14 @@
                     console.error('Card container not found.');
                     return;
                 }
+                
+                const originalWidth = cardContainer.offsetWidth;
+                const originalHeight = cardContainer.offsetHeight;
 
                 html2canvas(cardContainer, {
-                    scale: 10,
+                    scale: 5,
+                    width: originalWidth,
+                    height: originalHeight,
                     useCORS: true
                 }).then(canvas => {
                     const link = document.createElement('a');
