@@ -1,492 +1,143 @@
-<!DOCTYPE-html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kairali Membership Card Generator</title>
+    <title>Kairali Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .hidden {
-            display: none;
-        }
-        /* Reverted back to original styles */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
             padding: 20px;
+            box-sizing: border-box;
         }
         #main-container {
-            max-width: 600px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 500px;
+            background-color: teal;
             padding: 20px;
-            background-color: white;
             border-radius: 10px;
+            border: 15px solid white;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
         }
-        #login-container, #app-container {
-            padding: 20px 10px;
+        #logo-container {
+            margin-bottom: 20px;
         }
-        #login-container > div, #app-container > div {
+        #logo {
+            width: 150px;
+            height: auto;
+            border-radius: 5px;
+        }
+        #header {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .input-group {
+            width: 90%;
+            max-width: 300px;
+            margin: 0 auto 15px auto;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: white;
+        }
+        .input-group input {
+            width: 100%;
             padding: 10px;
+            border: 1px solid #888;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            background-color: white;
+            color: #000;
+        }
+        .login-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            width: 100%;
+        }
+        .login-button {
+            padding: 12px 20px;
+            background-color: teal;
+            color: white;
+            border: 1px solid #333;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+        .login-button:hover {
+            background-color: #008080; /* A slightly darker teal on hover */
+        }
+        .message-box {
+            margin-top: 15px;
+            color: red;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        .version {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+            color: #999;
         }
     </style>
 </head>
-<body style="font-family: 'Inter', sans-serif; background-color: #f0f0f0; padding: 20px;">
-    <div id="main-container" style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-
-        <!-- Login Form Section -->
-        <div id="login-container" style="background-color: teal; border-radius: 10px; color: white; position: relative;">
-            <div style="padding: 20px; border-radius: 10px;">
-                <img src="https://static.wixstatic.com/media/5bde00_f089149e8ee445389ee9f8191b5996ce~mv2.png" alt="Kairali of Syracuse Logo" style="display: block; width: 150px; margin: 0 auto;">
-                <h1 style="text-align: center; color: white; font-size: 28px; margin-top: 20px; font-family: 'EB Garamond', serif;">Kairali Membership Card Generator</h1>
-                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 0 auto;">
-                    <label for="username-input" style="display: block; margin-bottom: 5px; color: white;">Username</label>
-                    <input type="text" id="username-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                </div>
-                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
-                    <label for="password-input" style="display: block; margin-bottom: 5px; color: white;">Password</label>
-                    <input type="password" id="password-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                </div>
-                <p id="login-error-message" style="color: red; text-align: center; display: none;">Invalid username or password.</p>
-                <div style="display: flex; justify-content: center; margin-top: 15px;">
-                    <button id="login-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Login</button>
-                </div>
-            </div>
-            <div style="position: absolute; bottom: 15px; right: 20px; color: darkgrey; font-size: 12px;">v1.7</div>
+<body>
+    <div id="main-container">
+        <div id="logo-container">
+            <img src="https://static.wixstatic.com/media/5bde00_f089149e8ee445389ee9f8191b5996ce~mv2.png" alt="Kairali Logo" id="logo">
         </div>
-
-        <!-- Main Application Section -->
-        <div id="app-container" class="hidden" style="background-color: teal; color: white; padding: 20px; border-radius: 10px;">
-            <div id="status-message" style="text-align: center; margin-bottom: 20px; color: white;">Please fill out the form to generate Kairali membership card.</div>
-
-            <!-- Input Form -->
-            <div id="input-form">
-                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 0 auto;">
-                    <label for="member-id-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Member ID</label>
-                    <input type="text" id="member-id-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                </div>
-                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
-                    <label for="member-name-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Member Name</label>
-                    <input type="text" id="member-name-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                </div>
-                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
-                    <label for="family-members-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> # of members in the family</label>
-                    <input type="number" id="family-members-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                </div>
-                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
-                    <label for="membership-type-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Membership Type</label>
-                    <select id="membership-type-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                        <option value="" selected disabled>Select Membership Type</option>
-                        <option value="Patron-Family">Patron-Family</option>
-                        <option value="Patron-Individual">Patron-Individual</option>
-                        <option value="Patron-Student">Patron-Student</option>
-                        <option value="Regular-Family">Regular-Family</option>
-                        <option value="Regular-Individual">Regular-Individual</option>
-                        <option value="Regular-Student">Regular-Student</option>
-                    </select>
-                </div>
-                <div style="margin-bottom: 20px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
-                    <label for="membership-expires-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Membership Expiry</label>
-                    <input type="date" id="membership-expires-input" value="2025-12-31" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                </div>
-                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
-                    <label for="phone-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> Phone Number</label>
-                    <div style="display: flex; flex-wrap: wrap; gap: 5px;">
-                        <select id="isd-code-select" style="width: 40%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                            <option value="+1">USA/CA (+1)</option>
-                            <option value="+91">India (+91)</option>
-                            <option value="+44">UK (+44)</option>
-                            <option value="+971">UAE (+971)</option>
-                            <option value="+61">Australia (+61)</option>
-                            <option value="+49">Germany (+49)</option>
-                            <option value="+65">Singapore (+65)</option>
-                        </select>
-                        <input type="tel" id="phone-input" style="flex-grow: 1; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                    </div>
-                </div>
-                <div style="margin-bottom: 15px; width: 90%; max-width: 300px; margin: 15px auto 0 auto;">
-                    <label for="email-input" style="display: block; margin-bottom: 5px;"><span style="color: red;">*</span> E-mail</label>
-                    <input type="email" id="email-input" style="width: 100%; padding: 10px; border: 1px solid #888; border-radius: 5px; box-sizing: border-box; background-color: white; color: #000;">
-                </div>
-                
-                <input type="file" id="profile-pic-upload" accept="image/*" style="display: none;">
-                
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;">
-                    <button id="profile-pic-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"><span style="color: red;">*</span> Member Picture</button>
-                    <button id="generate-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Generate Card</button>
-                    <button id="clear-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Reset</button>
-                    <button id="back-to-login-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Back</button>
-                </div>
-            </div>
-
-            <!-- Membership Card Display -->
-            <div id="app-content" class="hidden" style="text-align: center;">
-                <div id="status-message" style="text-align: center; margin-bottom: 20px; color: white;"></div>
-                <div id="card-container" style="margin: 20px 0;">
-                    <div id="card-front" style="border: 2px solid white; box-shadow: inset 0 0 0 2px white, inset 0 0 0 4px rgba(255, 255, 255, 0.2), inset 0 0 0 6px white, 0 4px 10px rgba(0,0,0,0.2); padding: 40px 10px 20px 10px; background-color: #000; color: #fff; position: relative; max-width: 250px; margin: 0 auto; background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: space-between;">
-                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.4);"></div>
-                        <div style="position: relative; z-index: 1; flex-grow: 1;">
-                            
-                            <h2 id="card-org-name" style="text-align: center; margin-top: 10px; font-family: 'Bebas Neue', cursive; font-weight: normal; font-size: 15px; text-transform: uppercase; color: #C0C0C0;">Kairali Of Syracuse - Membership</h2>
-                            <div style="width: 70px; height: 70px; margin: 0 auto; overflow: hidden; background-color: #000; display: flex; justify-content: center; align-items: center;">
-                                <img id="member-profile-pic" src="" style="width: 100%; height: 100%; object-fit: contain; object-position: center;">
-                            </div>
-                            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 5px;">
-                                <div style="width: 90%; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 5px; margin-top: 10px; margin-bottom: 20px;">
-                                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%;">
-                                        <p style="margin: 0; font-size: 11px; white-space: nowrap; color: #C0C0C0;">MEMBER NAME</p>
-                                        <p id="card-member-name" style="margin: 0; font-size: 11px; font-weight: normal; text-align: right; word-wrap: break-word; overflow-wrap: break-word; color: #C0C0C0;"></p>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%;">
-                                        <p style="margin: 0; font-size: 11px; white-space: nowrap; color: #C0C0C0;">MEMBER ID</p>
-                                        <p id="card-member-id" style="margin: 0; font-size: 11px; font-weight: normal; text-align: right; word-wrap: break-word; overflow-wrap: break-word; color: #C0C0C0;"></p>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%;">
-                                        <p style="margin: 0; font-size: 11px; white-space: nowrap; color: #C0C0C0;">MEMBERSHIP TYPE</p>
-                                        <p id="card-membership-type" style="margin: 0; font-size: 11px; font-weight: normal; text-align: right; word-wrap: break-word; overflow-wrap: break-word; color: #C0C0C0;"></p>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%;">
-                                        <p style="margin: 0; font-size: 11px; white-space: nowrap; color: #C0C0C0;">EXPIRES ON</p>
-                                        <p id="card-membership-expires" style="margin: 0; font-size: 11px; font-weight: normal; text-align: right; word-wrap: break-word; overflow-wrap: break-word; color: #C0C0C0;"></p>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%;">
-                                        <p style="margin: 0; font-size: 11px; white-space: nowrap; color: #C0C0C0;">PHONE NUMBER</p>
-                                        <p id="card-phone" style="margin: 0; font-size: 11px; font-weight: normal; text-align: right; word-wrap: break-word; overflow-wrap: break-word; color: #C0C0C0;"></p>
-                                    </div>
-                                    <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%;">
-                                        <p style="margin: 0; font-size: 11px; white-space: nowrap; color: #C0C0C0;">E-MAIL</p>
-                                        <p id="card-email" style="margin: 0; font-size: 11px; font-weight: normal; text-align: right; word-wrap: break-word; overflow-wrap: break-word; color: #C0C0C0;"></p>
-                                    </div>
-                                </div>
-                                <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
-                                    <div id="qr-code-placeholder" style="width: 80px; height: 80px; background-color: white;"></div>
-                                    <div style="display: flex; justify-content: center; gap: 20px; font-size: 10px; color: grey; margin-top: 10px;">
-                                        <p style="margin: 0;">www.kairalisyr.org</p>
-                                        <p style="margin: 0;">315-552-0344</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <p style="margin-top: 20px; text-align: center; font-size: 6px; color: #C0C0C0;">* Membership cards are limited to one per household.<br>* This card is non-transferable and may only be used by the designated cardholder.</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px;">
-                    <button id="download-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Download Card</button>
-                    <button id="back-button" style="padding: 12px 20px; border: 1px solid #333; background-color: teal; color: white; font-size: 16px; cursor: pointer; border-radius: 8px; box-sizing: border-box; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">Back</button>
-                </div>
-            </div>
+        <h2 id="header">Kairali of Syracuse - Login</h2>
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username">
         </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <div class="login-button-container">
+            <button class="login-button" id="login-button">Login</button>
+        </div>
+        <div class="message-box" id="message-box"></div>
+        <div class="version">v1.5</div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-
     <script>
-        let allMemberData = [];
-        let cardBackground = 'https://static.wixstatic.com/media/5bde00_697bafb9e5c2400f9d735ae1edc4418f~mv2.png';
-        let profilePic = '';
+        document.getElementById('login-button').addEventListener('click', () => {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageBox = document.getElementById('message-box');
 
-        function updateCardUI(cardData) {
-            document.getElementById('card-member-name').textContent = cardData.name;
-            document.getElementById('card-member-id').textContent = cardData.membershipId;
-            document.getElementById('card-phone').textContent = cardData.phoneNumber;
-            document.getElementById('card-email').textContent = cardData.email;
-            document.getElementById('card-membership-type').textContent = cardData.membershipType;
-            
-            const dateParts = cardData.membershipExpires.split('-');
-            if (dateParts.length === 3) {
-                const [year, month, day] = dateParts;
-                const formattedExpires = `${month}/${day}/${year}`;
-                document.getElementById('card-membership-expires').textContent = formattedExpires;
+            if (username === 'kairaliadmin' && password === 'kairaliadmin') {
+                window.location.href = 'home_screen.html';
             } else {
-                document.getElementById('card-membership-expires').textContent = cardData.membershipExpires;
+                messageBox.textContent = 'Incorrect username or password. Please try again.';
             }
-
-            const qrCodePlaceholder = document.getElementById('qr-code-placeholder');
-            qrCodePlaceholder.innerHTML = '';
-            if (cardData.membershipId && cardData.membershipId !== 'N/A') {
-                const qrUrl = `https://www.kairalisyr.org/about-5/qrScanner.html?memberName=${encodeURIComponent(cardData.name)}`;
-                new QRCode(qrCodePlaceholder, {
-                    text: qrUrl,
-                    width: 80,
-                    height: 80,
-                    colorDark: "#000000",
-                    colorLight: "#ffffff",
-                    correctLevel: QRCode.CorrectLevel.H
-                });
-            }
-            
-            const cardFront = document.getElementById('card-front');
-            if (cardBackground) {
-                cardFront.style.backgroundImage = `url(${cardBackground})`;
-                cardFront.style.color = '#fff';
-            } else {
-                cardFront.style.backgroundImage = 'none';
-                cardFront.style.backgroundColor = '#000';
-                cardFront.style.color = '#fff';
-            }
-
-            const profilePicEl = document.getElementById('member-profile-pic');
-            if (profilePic) {
-                profilePicEl.src = profilePic;
-            } else {
-                profilePicEl.src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
-            }
-        }
-
-        function processImage(file, callback) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                const img = new Image();
-                img.onload = () => {
-                    const canvas = document.createElement('canvas');
-                    const ctx = canvas.getContext('2d');
-                    
-                    const MAX_WIDTH = 800;
-                    const MAX_HEIGHT = 800;
-                    let width = img.width;
-                    let height = img.height;
-
-                    if (width > height) {
-                        if (width > MAX_WIDTH) {
-                            height *= MAX_WIDTH / width;
-                            width = MAX_WIDTH;
-                        }
-                    } else {
-                        if (height > MAX_HEIGHT) {
-                            width *= MAX_HEIGHT / height;
-                            height = MAX_HEIGHT;
-                        }
-                    }
-                    
-                    canvas.width = width;
-                    canvas.height = height;
-                    ctx.drawImage(img, 0, 0, width, height);
-                    
-                    const resizedDataUrl = canvas.toDataURL('image/png', 1.0);
-                    callback(resizedDataUrl);
-                };
-                img.src = event.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-
-        function resetForm() {
-            document.getElementById('member-name-input').value = '';
-            document.getElementById('member-id-input').value = '';
-            document.getElementById('family-members-input').value = '';
-            document.getElementById('phone-input').value = '';
-            document.getElementById('email-input').value = '';
-            document.getElementById('membership-type-input').value = '';
-            document.getElementById('isd-code-select').value = '+1';
-            profilePic = '';
-            document.getElementById('profile-pic-upload').value = null;
-            document.getElementById('profile-pic-button').style.backgroundColor = 'teal';
-            document.getElementById('profile-pic-button').style.color = 'white';
-            document.getElementById('status-message').textContent = 'Please fill out the form to generate Kairali membership card.';
-            
-            const cardFront = document.getElementById('card-front');
-            cardFront.style.backgroundImage = `url(${cardBackground})`;
-            const profilePicEl = document.getElementById('member-profile-pic');
-            profilePicEl.src = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
-        }
-        
-        function initializeApp() {
-            const loginContainerEl = document.getElementById('login-container');
-            const appContainerEl = document.getElementById('app-container');
-            const usernameInputEl = document.getElementById('username-input');
-            const passwordInputEl = document.getElementById('password-input');
-            const loginButtonEl = document.getElementById('login-button');
-            const loginErrorMessageEl = document.getElementById('login-error-message');
-            const backToLoginButtonEl = document.getElementById('back-to-login-button');
-            const appContentEl = document.getElementById('app-content');
-            const inputFormEl = document.getElementById('input-form');
-            const generateButtonEl = document.getElementById('generate-button');
-            const clearButtonEl = document.getElementById('clear-button');
-            const downloadButtonEl = document.getElementById('download-button');
-            const backButtonEl = document.getElementById('back-button');
-            const nameInputEl = document.getElementById('member-name-input');
-            const memberIdInputEl = document.getElementById('member-id-input');
-            const familyInputEl = document.getElementById('family-members-input');
-            const phoneInputEl = document.getElementById('phone-input');
-            const emailInputEl = document.getElementById('email-input');
-            const membershipTypeInputEl = document.getElementById('membership-type-input');
-            const membershipExpiresInputEl = document.getElementById('membership-expires-input');
-            const profilePicButtonEl = document.getElementById('profile-pic-button');
-            const profilePicUploadEl = document.getElementById('profile-pic-upload');
-            const isdCodeSelectEl = document.getElementById('isd-code-select');
-            const statusMessageEl = document.getElementById('status-message');
-            
-            // Simulates a secure backend login process.
-            function authenticateUser(username, password) {
-                return new Promise(resolve => {
-                    // Simulate a network delay for the API call
-                    setTimeout(() => {
-                        const validUser = (username === 'kairaliadmin' && password === 'kairaliadmin');
-                        resolve(validUser);
-                    }, 1000); // 1-second delay
-                });
-            }
-
-            loginButtonEl.addEventListener('click', async () => {
-                const username = usernameInputEl.value;
-                const password = passwordInputEl.value;
-
-                loginButtonEl.disabled = true;
-                loginErrorMessageEl.style.display = 'none';
-                loginErrorMessageEl.textContent = 'Authenticating...';
-                loginErrorMessageEl.style.color = 'white';
-                loginErrorMessageEl.style.display = 'block';
-
-                const isAuthenticated = await authenticateUser(username, password);
-                loginButtonEl.disabled = false;
-
-                if (isAuthenticated) {
-                    loginContainerEl.classList.add('hidden');
-                    appContainerEl.classList.remove('hidden');
-                    resetForm();
-                    // Set default Member ID
-                    document.getElementById('member-id-input').value = '2025KSYR';
-                    statusMessageEl.textContent = 'Please fill out the form to generate Kairali membership card.';
-                    updateCardUI({});
-                } else {
-                    loginErrorMessageEl.textContent = 'Invalid username or password.';
-                    loginErrorMessageEl.style.color = 'red';
-                    loginErrorMessageEl.style.display = 'block';
-                }
-            });
-
-            backToLoginButtonEl.addEventListener('click', () => {
-                appContainerEl.classList.add('hidden');
-                loginContainerEl.classList.remove('hidden');
-                usernameInputEl.value = '';
-                passwordInputEl.value = '';
-                loginErrorMessageEl.style.display = 'none';
-                
-                appContentEl.classList.add('hidden');
-                inputFormEl.classList.remove('hidden');
-                statusMessageEl.textContent = 'Please enter your details to generate a digital membership card.';
-            });
-
-            nameInputEl.addEventListener('input', (event) => {
-                let value = event.target.value;
-                value = value.replace(/[^a-zA-Z ]/g, '').toUpperCase();
-                event.target.value = value;
-            });
-
-            phoneInputEl.addEventListener('input', (event) => {
-                let value = event.target.value;
-                value = value.replace(/[^0-9]/g, '');
-                event.target.value = value;
-            });
-            
-            profilePicButtonEl.addEventListener('click', () => {
-                profilePicUploadEl.click();
-            });
-
-            profilePicUploadEl.addEventListener('change', (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    processImage(file, (resizedDataUrl) => {
-                        profilePic = resizedDataUrl;
-                        profilePicButtonEl.style.backgroundColor = 'dodgerblue';
-                        profilePicButtonEl.style.color = 'white';
-                        statusMessageEl.textContent = 'Profile picture selected! You can now generate your card.';
-                        updateCardUI({});
-                    });
-                }
-            });
-
-            generateButtonEl.addEventListener('click', () => {
-                const memberName = nameInputEl.value.trim();
-                const memberId = memberIdInputEl.value.trim();
-                const familyMembers = familyInputEl.value.trim();
-                const selectedISDCode = isdCodeSelectEl.value;
-                const phoneInputNumber = phoneInputEl.value.trim();
-                const phoneNumber = `${selectedISDCode} ${phoneInputNumber}`;
-                const email = emailInputEl.value.trim();
-                const membershipType = membershipTypeInputEl.value;
-                const membershipExpires = membershipExpiresInputEl.value;
-
-                if (memberName === '' || familyMembers === '' || phoneInputNumber === '' || email === '' || membershipType === '' || membershipExpires === '' || memberId === '' || profilePic === '') {
-                    statusMessageEl.textContent = 'Please fill out all fields, including the profile picture.';
-                    return;
-                }
-
-                statusMessageEl.textContent = 'Generating new card...';
-                
-                const newMemberId = memberId;
-
-                const cardData = {
-                    name: memberName,
-                    membershipId: newMemberId,
-                    familyMembers: familyMembers,
-                    phoneNumber: phoneNumber,
-                    email: email,
-                    membershipType: membershipType,
-                    membershipExpires: membershipExpires,
-                };
-                
-                allMemberData.push(cardData);
-                updateCardUI(cardData);
-
-                statusMessageEl.textContent = 'Kairali Membership Card generated and ready to download.';
-                appContentEl.classList.remove('hidden');
-                inputFormEl.classList.add('hidden');
-            });
-            
-            clearButtonEl.addEventListener('click', () => {
-                resetForm();
-            });
-            
-            backButtonEl.addEventListener('click', () => {
-                appContentEl.classList.add('hidden');
-                inputFormEl.classList.remove('hidden');
-                statusMessageEl.textContent = 'Please enter your details to generate a digital membership card.';
-            });
-            
-            downloadButtonEl.addEventListener('click', () => {
-                if (allMemberData.length === 0) {
-                    statusMessageEl.textContent = 'No card data to download. Please generate a card first.';
-                    return;
-                }
-
-                statusMessageEl.textContent = 'Downloading file...';
-                
-                const cardContainer = document.getElementById('card-front');
-                if (!cardContainer) {
-                    console.error('Card container not found.');
-                    return;
-                }
-                
-                const originalWidth = cardContainer.offsetWidth;
-                const originalHeight = cardContainer.offsetHeight;
-
-                html2canvas(cardContainer, {
-                    scale: 5,
-                    width: originalWidth,
-                    height: originalHeight,
-                    useCORS: true
-                }).then(canvas => {
-                    const link = document.createElement('a');
-                    link.download = 'membership-card.png';
-                    link.href = canvas.toDataURL('image/png');
-                    link.click();
-                    
-                    statusMessageEl.textContent = 'Kairali Membership Card downloaded successfully!';
-                }).catch(error => {
-                    console.error('Error during download:', error);
-                    statusMessageEl.textContent = 'Error downloading PNG. See console for details.';
-                });
-            });
-        }
-
-        window.onload = initializeApp;
+        });
     </script>
 </body>
-
 </html>
